@@ -1,36 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import React from 'react';
+import Tooltip from './Tooltip';
+// import './App.css';
 
 function App() {
-  const { id } = useParams();
-
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setLoading(true);
-
-    fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setUser(data);
-        setLoading(false);
-      });
-  }, [id]);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
   return (
     <div>
-      <p>Name: {user.name}</p>
-      <p>Username: {user.username}</p>
-      <p>Email: {user.email}</p>
-      <p>Phone: {user.phone}</p>
-      <p>Website: {user.website}</p>
+      <Tooltip text="This is another tooltip">
+        <h1>Hover over me</h1>
+      </Tooltip>
+      
+      <br/>
 
-      <Link to="/">Back</Link>
+      <Tooltip text="This is another tooltip">
+        <p>Hover over me to see another tooltip</p>
+      </Tooltip>
     </div>
   );
 }
