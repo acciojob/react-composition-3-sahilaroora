@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
-// import '../components/Too.css'
 import './Tooltip.css'
 
-const Tooltip = ({ text, children }) => {
+const Tooltip = ({ text, children, as: Tag = 'div' }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   return (
-    <div
+    <Tag
       className="tooltip"
       onMouseEnter={() => setIsVisible(true)}
       onMouseLeave={() => setIsVisible(false)}
     >
-      {children}
+      <div>{children}</div>
       {isVisible && <span className="tooltiptext">{text}</span>}
-    </div>
+    </Tag>
   );
 };
 
